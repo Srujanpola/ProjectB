@@ -14,6 +14,7 @@ import { RootStackParamList } from "../app";
 type UsersScreenRouteProp = RouteProp<RootStackParamList, "UsersScreen">;
 
 const UsersScreen = ({ route }: { route: UsersScreenRouteProp }) => {
+  console.log("UsersScreen route.params",route.params);
   const userId = route.params?.userId;
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -27,7 +28,7 @@ const UsersScreen = ({ route }: { route: UsersScreenRouteProp }) => {
           const parsedUsers = JSON.parse(cachedUsers);
           setUsers(
             userId
-              ? parsedUsers.filter((user: any) => user.id === userId)
+              ? parsedUsers.filter((user: any) => user.id == userId)
               : parsedUsers
           );
           setLoading(false);
@@ -37,7 +38,7 @@ const UsersScreen = ({ route }: { route: UsersScreenRouteProp }) => {
           );
           const data = await response.json();
           setUsers(
-            userId ? data.filter((user: any) => user.id === userId) : data
+            userId ? data.filter((user: any) => user.id == userId) : data
           );
           await AsyncStorage.setItem("users", JSON.stringify(data));
         } else {

@@ -12,33 +12,40 @@ const TaskScreen = (props: TaskScreenProps) => {
 
   return (
     <View style={styles.container}>
-      {["List", "ProductDetails", "UsersScreen", "TokenScreen"].map(
-        (screenName, index) => (
-          <View key={screenName} style={styles.buttonContainer}>
-            <Button
-              title={screenName}
-              onPress={() => {
-                switch (screenName) {
-                  case "List":
-                    navigation.navigate(screenName);
-                    break;
-                  case "ProductDetails":
-                    navigation.navigate(screenName);
-                    break;
-                  case "UsersScreen":
-                    navigation.navigate(screenName, { userId: undefined });
-                    break;
-                  case "TokenScreen":
-                    navigation.navigate(screenName);
-                    break;
-                  default:
-                    console.log(`Unknown screen: ${screenName}`);
-                }
-              }}
-            />
-          </View>
-        )
-      )}
+      {[
+        "List",
+        "ProductDetails",
+        "UsersScreen",
+        "TokenScreen",
+        "DeviceInfoScreen",
+      ].map((screenName, index) => (
+        <View key={screenName} style={styles.buttonContainer}>
+          <Button
+            title={screenName}
+            onPress={() => {
+              switch (screenName) {
+                case "List":
+                  navigation.navigate(screenName);
+                  break;
+                case "ProductDetails":
+                  navigation.navigate(screenName);
+                  break;
+                case "UsersScreen":
+                  navigation.navigate(screenName, { userId: undefined });
+                  break;
+                case "TokenScreen":
+                  navigation.navigate(screenName);
+                  break;
+                case "DeviceInfoScreen":
+                  navigation.navigate(screenName);
+                  break;
+                default:
+                  console.log(`Unknown screen: ${screenName}`);
+              }
+            }}
+          />
+        </View>
+      ))}
     </View>
   );
 };
