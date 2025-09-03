@@ -1,0 +1,10 @@
+<FlatList
+   data={data}  renderItem={(item) => <Text>
+ {item.title}</Text>}/>
+
+ the issue is destructuring render item gets a object not item 
+ so we need destructure it like below or we can also use item.item.title which is not preffered style
+
+<FlatList
+   data={data}  renderItem={({item}) => <Text>
+ {item.title}</Text>}/>
